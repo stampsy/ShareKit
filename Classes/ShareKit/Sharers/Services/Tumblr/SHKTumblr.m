@@ -140,7 +140,9 @@ static NSString *const kSHKTumblrLastBlog = @"kSHKTumblrLastBlog";
 	}
 	else {
 		SHKLog(@"req: %@", authorizeResponseQueryVars);
-		[oRequest setOAuthParameterName:@"oauth_verifier" withValue:[authorizeResponseQueryVars objectForKey:@"oauth_verifier"]];
+        if ([authorizeResponseQueryVars objectForKey:@"oauth_verifier"]) {
+            [oRequest setOAuthParameterName:@"oauth_verifier" withValue:[authorizeResponseQueryVars objectForKey:@"oauth_verifier"]];
+        }
 	}
 }
 
